@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GTBank Finacle Go Live Countdown</title>
   <style>
+    /* Optimisé pour grands écrans TV d'exposition (1920x1080 / 4K) */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       background: #ffffff; /* White background */
@@ -15,60 +20,116 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      padding: 40px;
       text-align: center;
       position: relative;
+      overflow: hidden;
     }
 
-    /* Logo positioned top-right */
+    /* Logo agrandi pour TV */
     img.logo {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 100px;
+      top: 60px;
+      right: 80px;
+      width: 280px;
+      height: auto;
     }
 
     h1 {
       color: #FF6600; /* GTBank Orange */
-      font-size: 2.5em;
-      margin-bottom: 40px;
-      letter-spacing: 1px;
+      font-size: 7vw; /* Adaptatif à la taille d'écran */
+      font-weight: bold;
+      margin-bottom: 80px;
+      letter-spacing: 4px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .countdown {
       display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: 60px;
+      flex-wrap: nowrap;
       justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 1800px;
     }
 
     .time-box {
       background: #FF6600; /* GTBank Orange cards */
       color: #000000;
-      border-radius: 12px;
-      padding: 20px 30px;
+      border-radius: 30px;
+      padding: 60px 80px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      min-width: 120px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .time-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      min-width: 300px;
+      flex: 1;
     }
 
     .time {
-      font-size: 3em;
+      font-size: 10vw; /* Très grande taille pour visibilité à distance */
       font-weight: bold;
       color: #ffffff; /* White numbers */
+      line-height: 1;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
     }
 
     .label {
-      font-size: 1em;
+      font-size: 2.5vw;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 5px;
+      letter-spacing: 3px;
+      margin-top: 20px;
       color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Animation subtile pour attirer l'attention */
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.02);
+      }
+    }
+
+    .time-box {
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    /* Responsive pour différentes tailles de TV */
+    @media (min-width: 3840px) {
+      /* 4K et plus */
+      img.logo {
+        width: 400px;
+        top: 80px;
+        right: 120px;
+      }
+      h1 {
+        margin-bottom: 120px;
+      }
+      .countdown {
+        gap: 100px;
+      }
+      .time-box {
+        padding: 80px 100px;
+        min-width: 400px;
+      }
+    }
+
+    @media (max-width: 1280px) {
+      /* Petits écrans */
+      img.logo {
+        width: 200px;
+        top: 40px;
+        right: 60px;
+      }
+      .countdown {
+        gap: 40px;
+      }
+      .time-box {
+        padding: 40px 50px;
+        min-width: 200px;
+      }
     }
   </style>
 </head>
@@ -107,7 +168,7 @@
 
       if (distance < 0) {
         clearInterval(timer);
-        document.querySelector(".countdown").innerHTML = "<h2 style='color:#FF6600;'>🎉 Finacle is Live at GTBank! 🎉</h2>";
+        document.querySelector(".countdown").innerHTML = "<h2 style='color:#FF6600; font-size: 8vw; font-weight: bold; text-shadow: 3px 3px 6px rgba(0,0,0,0.2);'>🎉 Finacle is Live at GTBank! 🎉</h2>";
         return;
       }
 
